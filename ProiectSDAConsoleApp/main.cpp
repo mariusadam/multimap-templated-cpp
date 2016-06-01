@@ -25,7 +25,7 @@ void testVector() {
 	}
 }
 
-void printMap(MultiMap & md) {
+void printMap(MultiMap<std::string, std::string> & md) {
 	auto keys = md.keys();
 	for (const auto & key : keys) {
 		std::cout << "---------------------\n";
@@ -38,7 +38,7 @@ void printMap(MultiMap & md) {
 }
 
 void testMultiMap() {
-	MultiMap md;
+	MultiMap<std::string, std::string> md;
 	md.add("red", "rosu");
 	md.add("book", "carte");
 	md.add("tail", "revers");
@@ -59,11 +59,6 @@ void testMultiMap() {
 	//}
 	//std::cout << "---------------------\n";
 	printMap(md);
-	md.deleteKey("cry");
-	md.deleteKey("cat");
-	md.deleteKey("book");
-	md.deleteKey("append");
-	md.deleteKey("tail");
 		
 	std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
 	printMap(md);

@@ -1,3 +1,3 @@
 #include "pereche.h"
 
-const TValoare Pereche::INVALID_VALUE{ "" };
+const TValue Entry::INVALID_VALUE{ "" };
