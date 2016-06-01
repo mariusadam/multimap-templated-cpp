@@ -1,5 +1,5 @@
-#ifndef PERECHE_H
-#define PERECHE_H
+#ifndef ENTRY_H
+#define ENTRY_H
 
 #include <string>
 #include <iostream>
@@ -84,4 +84,4 @@ public:
 	}
 };
 
-#endif /* PERECHE_H */
+#endif /* ENTRY_H */
