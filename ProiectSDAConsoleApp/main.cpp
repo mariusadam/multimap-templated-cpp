@@ -26,7 +26,7 @@ void testVector() {
 }
 
 void printMap(MultiMap<std::string, std::string> & md) {
-	auto keys = md.keys();
+	auto keys = md.keySet();
 	for (const auto & key : keys) {
 		std::cout << "---------------------\n";
 		std::cout << key << " = :\n";
@@ -52,16 +52,42 @@ void testMultiMap() {
 	md.add("cry", "strigat");
 	md.add("append", "a atasa");
 	md.add("cat", "pisica");
-	md.add("red", "rosu");
 
-	//for (const auto pair : md) {
-	//	std::cout << pair << std::endl;
-	//}
-	//std::cout << "---------------------\n";
+	for (const auto pair : md) {
+		std::cout << pair << std::endl;
+	}
+	std::cout << "---------------------\n";
 	printMap(md);
-		
+	md.removeAll("red");
+	md.removeAll("cry");
+	md.remove("blood", "neam");
 	std::cout << "$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n";
 	printMap(md);
+
+	MultiMap<char*, int> d;
+	d.add("cheia 1", 1);
+	d.add("cheia 2", 2);
+	d.add("cheia 3", 3);
+	d.add("cheia 1", 4);
+	for (auto e : d.entries()) {
+		std::cout << e << "\n";
+	}
+	std::cout << "---------------\n"; return;
+	MultiMap<double, char*> dc;
+	dc.add(1.23, "am adaugat 1.23");
+	dc.add(3.66, "am adaugat 3.66");
+	dc.add(1, "numai 1");
+	dc.add(1.230, "alta valoare pentru 1.23");
+	std::cout << "size " << dc.size() << "\n";
+	dc.removeAll(1.23);
+	dc.removeAll(3.66);
+	std::cout << "size " << dc.size() << "\n";
+	auto keyset = dc.keySet();
+	for (auto key : keyset) {
+		std::cout << key << " = \n";
+		for (auto val : dc[key])
+			std::cout <<"      "<< val << "\n";
+	}
 }
 
 int main() {

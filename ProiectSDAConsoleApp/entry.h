@@ -2,6 +2,7 @@
 #define PERECHE_H
 
 #include <string>
+#include <iostream>
 
 template<typename TKey, typename TValue> class Entry {
 private:
@@ -9,6 +10,8 @@ private:
 	TValue __value;
 	bool __isValid;
 public:
+	Entry(const TKey &key) : __key{ key }, __value{}, __isValid{ false } {}
+
 	/**
 	*	The default constructor
 	*/
@@ -36,8 +39,9 @@ public:
 	}
 
 	int hashCode() const {
-		int key_hash = std::hash<TKey>()(this->__key);
-		return (int)key_hash;
+		size_t key_hash = std::hash<TKey>()(this->__key);
+		int hashInt = (int)key_hash;
+		return hashInt < 0 ? (0 - hashInt) : hashInt;
 	}
 
 	Entry& operator=(const Entry& other) {
@@ -68,7 +72,7 @@ public:
 	}
 
 	bool operator==(const Entry &other) const {
-		return this->__key == other.__key;
+		return this->__key == other.__key && this->__value == other.__value && this->__isValid == other.__isValid;
 	}
 
 	bool operator!=(const Entry &other) const {
