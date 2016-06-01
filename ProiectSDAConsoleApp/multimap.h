@@ -192,7 +192,7 @@ template<typename TKey, typename TValue>void MultiMap<TKey, TValue>::remove(cons
 		}
 	}
 	if (foundAtLeastOneEntry == false) {
-		std::string error{ "KeyError : key could not be found!" };
+		std::string error{ "KeyError : entry could not be found!" };
 		throw MultiMapException(error.c_str());
 	}
 }
