@@ -1,7 +1,6 @@
-#pragma once
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include <exception>
 #include <cmath>
 
@@ -59,8 +58,8 @@ public:
 	bool valid() const;
 	IteratorVector& operator++();
 	Type& operator*() const;
-	bool operator==(const IteratorVector& other) const;
-	bool operator!=(const IteratorVector& other) const;
+	bool operator==(const IteratorVector<Type>& other) const;
+	bool operator!=(const IteratorVector<Type>& other) const;
 };
 
 /* Vector implementation */
@@ -200,14 +199,18 @@ template<typename Type>inline IteratorVector<Type>& IteratorVector<Type>::operat
 	return *this;
 }
 
-template<typename Type>inline bool IteratorVector<Type>::operator==(const IteratorVector& other) const {
+template<typename Type>inline bool IteratorVector<Type>::operator==(const IteratorVector<Type>& other) const {
 	return this->__current == other.__current;
 }
 
-template<typename Type>inline bool IteratorVector<Type>::operator!=(const IteratorVector& other) const {
+template<typename Type>inline bool IteratorVector<Type>::operator!=(const IteratorVector<Type>& other) const {
 	return !(*this == other);
 }
 
-template<typename Type>inline Type& IteratorVector<Type>::operator*() const{
+template<typename Type>inline Type& IteratorVector<Type>::operator*() const {
 	return this->element();
 }
+
+#endif // !VECTOR_H
+
+

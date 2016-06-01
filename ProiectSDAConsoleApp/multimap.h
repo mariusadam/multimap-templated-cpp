@@ -1,4 +1,3 @@
-#pragma once
 #ifndef MULTIMAP_H
 #define MULTIMAP_H
 
@@ -23,7 +22,6 @@ private:
 
 	int __dispersion(const Entry<TKey, TValue> &entry, int i) const{
 		int hash = entry.hashCode(), index = (hash + i) % this->__capacity;
-		//std::cout << entry.getKey() << " " << hash << " "<< index << "\n";
 		return index;
 	}
 	void __redispersion();
@@ -43,7 +41,7 @@ public:
 	Vector<TKey> keySet() const;
 	void remove(const TKey &key, const TValue &value);
 	void removeAll(const TKey &key);
-	bool empty();
+	bool empty() const;
 	Vector<TValue> operator[](const TKey &key) const;
 	const int capacity() const;
 	const int size() const;
@@ -216,7 +214,7 @@ template<typename TKey, typename TValue>void MultiMap<TKey, TValue>::removeAll(c
 	}
 }
 
-template<typename TKey, typename TValue>bool MultiMap<TKey, TValue>::empty() {
+template<typename TKey, typename TValue>bool MultiMap<TKey, TValue>::empty() const {
 	return this->__size == 0;
 }
 
