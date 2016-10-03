@@ -1,11 +1,6 @@
-#define _CRTDBG_MAP_ALLOC
-#include <stdlib.h>
-#include <crtdbg.h>
-
 #include <iostream>
 #include "vector.h"
 #include "multimap.h"
-#include <string>
 
 void testVector() {
 	Vector<std::string> vec{ 1000 };
@@ -94,6 +89,5 @@ int main() {
 	//testVector();
 	testMultiMap();
 	std::getchar();
-	_CrtDumpMemoryLeaks();
 	return 0;
 }
